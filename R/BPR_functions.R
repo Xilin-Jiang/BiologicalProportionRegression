@@ -10,7 +10,8 @@ grey <- cbPalette[1]
 yellow <- cbPalette[5]
 purple <- cbPalette[8]
 skyblue <- cbPalette[3]
-utils::globalVariables(c("prob", "section", "y"))
+utils::globalVariables(c("prob", "section", "y","cor", "prcomp", "lm", "sampling_se",
+                         "Bioprop_xi1_xi2", "ivw_bioprop"))
 
 ##################################################
 # Biological-Proportion Regression functions
