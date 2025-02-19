@@ -8,7 +8,7 @@ You can install the development version of Expression-wide Regression from [GitH
 
 ```r
 # install.packages("devtools")
-devtools::install_github("https://github.com/Xilin-Jiang/ExpressionWideRegression")
+devtools::install_github("https://github.com/Xilin-Jiang/BiologicalProportionRegression")
 ```
 
 ## Quick start
@@ -18,9 +18,8 @@ devtools::install_github("https://github.com/Xilin-Jiang/ExpressionWideRegressio
 Note for each individual, we only keep the first onset of each diseases. Therefore, if there are recurrent incidences of the same disease code for the same individual, the rest will be ignored. -->
 
 ```r
-library(ExpressionWideRegression)
-# head(HES_age_example)
-full_run_results_big_wrapper <- EWR(X_EXAMPLE,Z_EXAMPLE, use_as_helper = 2)
+library(BiologicalProportionRegression)
+quick_results <- bioProp_BPR_partialCor_adjustment(X_EXAMPLE, Y_EXAMPLE, Z_BPR = Z_EXAMPLE[,1:200], bootstrapping_number=20)
 ```
 
 
