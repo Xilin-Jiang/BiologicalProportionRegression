@@ -2,39 +2,35 @@
 % Please edit documentation in R/BPR_functions.R
 \name{BPR_fast_wrapper}
 \alias{BPR_fast_wrapper}
-\title{Title: BPR wrapper function. Input is many pairs of X and Y, and all based on the same set of Z.}
+\title{Title: BPR wrapper function. Input is many pairs of X and Y, and all based on the same set of Z.
+Paralle computation of all bootstrap samples to speed up the computation; this function is much faster for many pairs of X and Y.}
 \usage{
 BPR_fast_wrapper(
-  target_protein,
-  auxiliary_proteins,
-  top_PCs = 50,
-  number_of_Y_chosen = 5,
-  bootstrapping_number = 100,
-  threshold_PxPy = 0,
-  Z_pca_number = 500
+  target_traits,
+  helper_traits,
+  auxiliary_traits,
+  bootstrapping_number = 20,
+  covClumpThreshold = 0.5
 )
 }
 \arguments{
-\item{target_protein}{a vector which denote the levels of the target protein.}
+\item{target_traits}{a matrix (nrow= number of samples; ncolumns=number of target traits), each column is one target trait whose biological proportion is to be estimated.}
 
-\item{auxiliary_proteins}{matrix (each row correspond to one element in target proteins) of auxiliary proteins that tags biological variance in target proteins. We recommend at least 100 columns.}
+\item{helper_traits}{a matrix of the same size as target_traits; each column is the helper trait for the corresponding target trait; column index should match.}
 
-\item{top_PCs}{number of PCs estimated from auxiliary proteins; default 20.}
-
-\item{number_of_Y_chosen}{number of PCs used as Y for the EWR estimation; deafalt 5.}
+\item{auxiliary_traits}{matrix (each row correspond to one element in target proteins) of auxiliary proteins that tags biological variance in target proteins. We recommend at least 100 columns.}
 
 \item{bootstrapping_number}{number of boostrap samples for estimate uncertainty.}
 
-\item{threshold_PxPy}{a threshold for cor(PC, X)^2, default 0.}
-
-\item{Z_pca_number}{number of Ys chosen to compute Y.}
+\item{covClumpThreshold}{when computing the partial correlation matrix, clumping highly correlated pairs of Zs; default threshold cor>0.5.}
 }
 \value{
-A dataframe contains same output as the \code{bioProp_EWR_partialCor_adjustment} function.
+A dataframe contains same output as the \code{bioProp_BPR_partialCor_adjustment} function.
 }
 \description{
 Title: BPR wrapper function. Input is many pairs of X and Y, and all based on the same set of Z.
+Paralle computation of all bootstrap samples to speed up the computation; this function is much faster for many pairs of X and Y.
 }
 \examples{
-full_run_results_big_wrapper <- BPR_fast_wrapper(X_EXAMPLE,Z_EXAMPLE,number_of_Y_chosen = 2, bootstrapping_number = 5)
+full_run_results_big_wrapper <- BPR_fast_wrapper(cbind(X_EXAMPLE,X_EXAMPLE, X_EXAMPLE), cbind(Y_EXAMPLE,Y_EXAMPLE, Z_EXAMPLE[,1]), Z_EXAMPLE, bootstrapping_number = 5)
 }

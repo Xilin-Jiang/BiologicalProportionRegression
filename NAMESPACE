@@ -3,7 +3,7 @@
 export("%>%")
 export(BPR_fast_wrapper)
 export(IVW_summary)
-export(bioProp_EWR_partialCor_adjustment)
+export(bioProp_BPR_partialCor_adjustment)
 importFrom(dplyr,add_row)
 importFrom(dplyr,anti_join)
 importFrom(dplyr,arrange)

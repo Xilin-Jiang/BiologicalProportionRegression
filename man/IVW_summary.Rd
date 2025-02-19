@@ -7,7 +7,7 @@
 IVW_summary(bioProp_results)
 }
 \arguments{
-\item{bioProp_results}{output of  \code{EWR} function.}
+\item{bioProp_results}{output of  \code{BPR} function.}
 }
 \value{
 Summarised dataframe with IVW estimate.
@@ -16,6 +16,6 @@ Summarised dataframe with IVW estimate.
 Title: Inverse variance weighting combines different estimates
 }
 \examples{
-  full_run_results_big_wrapper <- EWR(X_EXAMPLE,Z_EXAMPLE, use_as_helper = 2)
+  full_run_results_big_wrapper <- BPR_fast_wrapper(cbind(X_EXAMPLE, X_EXAMPLE), cbind(Y_EXAMPLE,Z_EXAMPLE[,1]), Z_EXAMPLE, bootstrapping_number = 5)
   IVW_summary(full_run_results_big_wrapper)
 }
