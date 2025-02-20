@@ -58,6 +58,8 @@ a list containing objects:
 \item dilution_variance; estimated variance that are added to xi_XY when using Z to tag X (see supplemeetary methods for details, this is the E\link{Z_xi1^2} term); if this number is 0, then there is no solution for the dilution factor.
 \item dilution_BPR_sampling_se: bootstrapping se for the biological proportion estimate (adjusting for dilution).
 \item dilution_BPR_sampling_mean: bootstrapping sample mean for the biological proportion estimate (adjusting for dilution).
+\item dilution_BPR_adjusting_factor: accounting for the noisy auxiliary proteins, adjusting factor computed from the correlation matrix.
+\item dilution_BPR_sample_adjusting_factor: accounting for the noisy auxiliary proteins, adjusting factor computed from the correlation matrix, mean across bootstrap samples.
 \item dilution_BPR_Bioprop_xi1_xi2: biological proportion estimate after accounting for that Z only tags part of X.
 }
 }

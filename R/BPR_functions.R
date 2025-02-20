@@ -369,6 +369,8 @@ jackknife_acrossZ_partialCor <- function(cor_XY_Z, OLS_y2z, OLS_x2z, PxPy,
 #'    \item dilution_variance; estimated variance that are added to xi_XY when using Z to tag X (see supplemeetary methods for details, this is the E[Z_xi1^2] term); if this number is 0, then there is no solution for the dilution factor.
 #'    \item dilution_BPR_sampling_se: bootstrapping se for the biological proportion estimate (adjusting for dilution).
 #'    \item dilution_BPR_sampling_mean: bootstrapping sample mean for the biological proportion estimate (adjusting for dilution).
+#'    \item dilution_BPR_adjusting_factor: accounting for the noisy auxiliary proteins, adjusting factor computed from the correlation matrix.
+#'    \item dilution_BPR_sample_adjusting_factor: accounting for the noisy auxiliary proteins, adjusting factor computed from the correlation matrix, mean across bootstrap samples.
 #'    \item dilution_BPR_Bioprop_xi1_xi2: biological proportion estimate after accounting for that Z only tags part of X.
 #'    }
 #'
@@ -579,6 +581,8 @@ bioProp_BPR_partialCor_adjustment <- function(X, Y, Z_BPR, Z_proportion_ratio = 
   results_biprop$dilution_BPR_sampling_se <- dilution_BPR_sampling_se
   results_biprop$dilution_BPR_sampling_mean <- dilution_BPR_sampling_mean
   # use bootstrap to correct for bias in the BPR adjusting procedure
+  results_biprop$dilution_BPR_adjusting_factor <- dilution_correction$adjusting_factor
+  results_biprop$dilution_BPR_sample_adjusting_factor <- mean(bt_BPR_dilution_adjusting_factor)
   results_biprop$dilution_BPR_Bioprop_xi1_xi2 <- dilution_BPR_Bioprop_xi1_xi2
 
   return(results_biprop)
