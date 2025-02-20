@@ -871,8 +871,8 @@ BPR_fast_wrapper <- function(target_traits,  helper_traits, auxiliary_traits, bo
     results_biprop$dilution_BPR_Bioprop_xi1_xi2 <- dilution_BPR_Bioprop_xi1_xi2
 
     results_X_Y_pairs[[pair_idx]] <- bind_rows(results_biprop) %>%
-      mutate(X_Y_pair_idx = pair_idx, X_idx = colnames(target_traits)[pair_idx], Y_idx = colnames(helper_traits)[pair_idx]) %>%
-      select(X_Y_pair_idx, X_idx, Y_idx, everything())
+      mutate(X_Y_pair_idx = pair_idx) %>%
+      select(X_Y_pair_idx, everything())
   }
 
 
